@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX UNQ_CLI_CPF ON bc_cliente (cpf) WHERE (cpf IS NOT NULL)

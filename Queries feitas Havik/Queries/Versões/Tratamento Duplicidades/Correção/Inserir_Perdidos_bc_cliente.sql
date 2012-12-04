@@ -1,0 +1,61 @@
+use havik
+go
+INSERT INTO bc_cliente
+           (
+           nome
+           ,cpf
+           ,dt_nascimento
+           ,id_estado_civil
+           ,id_sexo
+           ,endereco
+           ,numero
+           ,complemento
+           ,cep
+           ,bairro
+           ,id_cidade
+           ,id_estado
+           ,id_pais
+           ,dt_alteracao
+           ,usuario_alteracao
+           ,id_antiga
+           ,tipo_contato
+           ,empresa_contato
+           ,ultimo_status
+           ,ultimo_substatus
+           ,produto
+           ,nome_pai
+           ,nome_mae
+           ,rg
+           ,id_uf_natural
+           ,id_natural
+           )
+select
+           nome
+           ,cpf
+           ,dt_nascimento
+           ,id_estado_civil
+           ,id_sexo
+           ,endereco
+           ,numero
+           ,complemento
+           ,cep
+           ,bairro
+           ,id_cidade
+           ,id_estado
+           ,id_pais
+           ,dt_alteracao
+           ,usuario_alteracao
+           ,id_antiga
+           ,tipo_contato
+           ,empresa_contato
+           ,ultimo_status
+           ,ultimo_substatus
+           ,produto
+           ,nome_pai
+           ,nome_mae
+           ,rg
+           ,id_uf_natural
+           ,id_natural
+from bc_cliente_dup
+where id in (select id from tmp_cli_inserir)
+

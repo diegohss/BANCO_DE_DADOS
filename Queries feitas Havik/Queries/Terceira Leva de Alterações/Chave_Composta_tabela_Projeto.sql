@@ -1,0 +1,33 @@
+/* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+GO
+DROP INDEX pk_cli_projeto ON dbo.bh_cli_projeto
+GO
+ALTER TABLE dbo.bh_cli_projeto
+	DROP CONSTRAINT PK__bh_cli_p__3213E83F73A521EA
+GO
+ALTER TABLE dbo.bh_cli_projeto ADD CONSTRAINT
+	PK__bh_cli_p PRIMARY KEY CLUSTERED 
+	(
+	id
+	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX pk_cli_projeto ON dbo.bh_cli_projeto
+	(
+	id_cliente,
+	id_projeto
+	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE dbo.bh_cli_projeto SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT

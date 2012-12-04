@@ -1,0 +1,31 @@
+declare @dt_atualizacao datetime
+
+select @dt_atualizacao=MAX(cli.dt_alteracao) from bc_cliente cli 
+
+--inner join bh_cli_status sts
+--on sts.id_cliente=cli.id
+--where id_projeto=2 and
+--id_status =1 and 
+--id_substatus=3
+
+insert into bc_cliente(id_antiga,
+--id,
+nome,
+dt_nascimento,
+--opt_mail,
+--opt_sms,
+dt_alteracao,
+--id_empresa
+usuario_alteracao
+)
+select idCandidatoSite,
+--idCandidatoSistema,
+Nome,
+DataNascimento,
+--EmailOK,
+--SmsOK,
+DataCadastro,
+--Empresa
+28
+from site.candidatosite can
+where DataCadastro>@dt_atualizacao
